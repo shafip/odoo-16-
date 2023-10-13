@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+        <record id="Managers_selected_views" model="res.groups">
+            <field name="name">Managers</field>
+            <field name="comment">Group Comment</field>
+        </record>
+        <record id="Employees_selected_views" model="res.groups">
+            <field name="name">Employees</field>
+            <field name="comment">Group Comment</field>
+        </record>
+
+</odoo>
+
+

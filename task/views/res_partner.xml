@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+
+        <record id="inherited_model_view_form" model="ir.ui.view">
+            <field name="name">custom.res.partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <div class="oe_button_box" name="button_box">
+                    <button name="stat_clothes_view_action" type="object" class="oe_stat_button" icon="fa-female"
+                            attrs="{'invisible': [('count_clothes', '&lt;', 1)]}">
+                        <span>Clothes</span>
+                        <span><field name="count_clothes"/></span>
+                    </button>
+                </div>
+                <div class="oe_button_box" name="button_box">
+                    <button name="stat_vehicle_accessories_view_action" type="object" class="oe_stat_button" icon="fa-truck"
+                            attrs="{'invisible': [('count_vehicle', '&lt;', 1)]}">
+                        <span>Vehicle</span>
+                        <span><field name="count_vehicle"/></span>
+                    </button>
+                </div>
+                <div class="oe_button_box" name="button_box">
+                    <button name="stat_school_accessories_view_action" type="object" class="oe_stat_button" icon="fa-wrench"
+                     attrs="{'invisible': [('count_school_accessories', '&lt;', 1)]}">
+                        <span>School</span>
+                        <span><field name="count_school_accessories"/></span>
+                    </button>
+                </div>
+                <div class="oe_button_box" name="button_box">
+                    <button name="stat_food_items_view_action" type="object" class="oe_stat_button" icon="fa-cutlery"
+                    attrs="{'invisible': [('count_food_items', '&lt;', 1)]}">
+                        <span>Food Items</span>
+                        <span><field name="count_food_items"/></span>
+                    </button>
+                </div>
+                <div class="oe_button_box" name="button_box">
+                    <button name="stat_material_action" type="object" class="oe_stat_button" icon="fa-wrench"
+                   attrs="{'invisible': [('count_material', '&lt;', 1)]}">
+                        <span><field name="count_material"/></span>
+                        <span>Material</span>
+                    </button>
+                </div>
+
+                <xpath expr="//field[@name='name']" position="after">
+                    <group>
+                        <field name="seq_number" string="Number" />
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='vat']" position="after">
+                    <group  attrs="{'invisible': [('supplier_rank', '&lt;', 1)]}">
+                        <field name="vendor_state" />
+                    </group>
+                    <field name="supplier_rank" invisible="1" />
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

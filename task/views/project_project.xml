@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data noupdate="1">
+        <record id="project_sequence_number" model="ir.sequence">
+            <field name="name">project.sequence.number</field>
+            <field name="code">project_sequence_number</field>
+            <field name="prefix">P</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="inherited_project_model_view_form" model="ir.ui.view">
+            <field name="name">add.sequence.number</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='display_name']" position="before">
+                    <field name="sequence_number" string="Number"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

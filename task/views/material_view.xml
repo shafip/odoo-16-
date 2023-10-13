@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="material_view" model="ir.ui.view">
+            <field name="name">material.view.form</field>
+            <field name="model">material.master</field>
+            <field name="arch" type="xml">
+                <form string="Material Master">
+                    <header>
+                        <button name="action_send_email" type="object" class="oe_highlight" string="Email"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="customer_name" string="Customer Name"/>
+                            <field name="collection_date"/>
+                        </group>
+                        <notebook>
+                            <page string="Material List">
+                                <field name="material_list" widget="one2many_list">
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="quantity"/>
+                                                <field name="code"/>
+                                                <field name="unit_price"/>
+                                                <field name="amount"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree editable='bottom' string="material tree">
+                                        <field name="name"/>
+                                        <field name="quantity"/>
+                                        <field name="code"/>
+                                        <field name="unit_price"/>
+                                        <field name="amount"/>
+                                    </tree>
+                                </field>
+                                <section string="Total Amount" style="text-align: right;">
+                                    <h1>Total
+                                        <field name="grand_total" sum="Total of Total Amount" />
+                                    </h1>
+                                </section>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="material_view_tree" model="ir.ui.view">
+            <field name="name">material.view.tree</field>
+            <field name="model">material.master</field>
+            <field name="arch" type="xml">
+                <tree string="Material List">
+                    <field name="customer_name"/>
+                    <field name="collection_date"/>
+                    <field name="material_list" />
+                    <field name="grand_total"/>
+                </tree>
+            </field>
+            <field name="arch" type="xml">
+                <tree string="Material List">
+                    <field name="customer_name"/>
+                    <field name="collection_date"/>
+                    <field name="material_list" />
+                    <field name="grand_total"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="material_property_action" model="ir.actions.act_window">
+            <field name="name">material view</field>
+            <field name="res_model">material.master</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
+

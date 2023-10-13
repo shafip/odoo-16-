@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="food_items_view" model="ir.ui.view">
+            <field name="name">food.view.form</field>
+            <field name="model">food.items</field>
+            <field name="arch" type="xml">
+                <form string="Food Items">
+                    <sheet>
+                        <group>
+                            <field name="customer_name" string=" Name"/>
+                            <field name="date"/>
+                        </group>
+                        <notebook>
+                            <page string="Food Items line">
+                                <field name="food_item_line_ids" widget="one2many_list">
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="code"/>
+                                                <field name="quantity"/>
+                                                <field name="price"/>
+                                                <field name="sub_total"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree editable='bottom' string="Food Item">
+                                       <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="quantity"/>
+                                        <field name="price"/>
+                                        <field name="sub_total"/>
+                                    </tree>
+                                </field>
+                                <section string="Total Amount" style="text-align: right;">
+                                    <h1>Total
+                                        <field name="grand_total" sum="Total of Total Amount" />
+                                    </h1>
+                                </section>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="food_items_view_tree" model="ir.ui.view">
+            <field name="name">food.item.view.tree</field>
+            <field name="model">food.items</field>
+            <field name="arch" type="xml">
+                <tree string="Food Item">
+                    <field name="customer_name" string="Customer Name"/>
+                    <field name="date"/>
+                    <field name="food_item_line_ids"/>
+                    <field name="grand_total"/>
+                </tree>
+            </field>
+
+        </record>
+
+        <record id="food_items_action" model="ir.actions.act_window">
+            <field name="name">food item view</field>
+            <field name="res_model">food.items</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <menuitem id="clothes_property_menu_root" name="Clothes">
+        <menuitem id="clothes_property_first_level_menu" name="Clothes">
+            <menuitem id="clothes_property_menu_action" action="clothes_property_action"/>
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="vehicle_accessories_menu_root" name="Vehicle">
+        <menuitem id="vehicle_accessories_first_level_menu" name="Vehicle Accessories">
+            <menuitem id="vehicle_accessories_menu_action" action="vehicle_accessories_action"/>
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="school_accessories_menu_root" name="School">
+        <menuitem id="school_accessories_first_level_menu" name="School Accessories">
+            <menuitem id="school_accessories_menu_action" action="school_accessories_action"/>
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="product_menu_root" name="Product Brand">
+        <menuitem id="product_brand_first_level_menu" name="Product">
+            <menuitem id="product_brand_menu_action" action="product_brand_action"/>
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="food_item_menu_root" name="Food">
+        <menuitem id="food_items_first_level_menu" name="Food items">
+            <menuitem id="food_items_menu_action" action="food_items_action"/>
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="material_property_menu_root" name="Material">
+        <menuitem id="material_property_first_level_menu" name="material">
+            <menuitem id="material_property_menu_action" action="material_property_action"/>
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="employee_property_menu_root" name="Employee">
+        <menuitem id="employee_property_first_level_menu" name="Employee">
+            <menuitem id="employee_property_menu_action" action="employee_property_action"/>
+        </menuitem>
+    </menuitem>
+
+</odoo>
+
+

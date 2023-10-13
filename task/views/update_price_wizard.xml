@@ -1,0 +1,29 @@
+<odoo>
+    <record model="ir.ui.view" id="template_form_view">
+        <field name="name">Product_template</field>
+        <field name="model">update.price.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Sale price">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="new_price"/>
+                        </group>
+                    </group>
+                </sheet>
+                    <footer>
+                        <button name="update_list_price" string="Update Price" type="object" class="btn-primary"/>
+                        <button string="CANCEL" special="cancel"/>
+                    </footer>
+            </form>
+        </field>
+    </record>
+    <data>
+        <record id="product_template_new_price_button" model="ir.actions.act_window">
+            <field name="name">Sale price</field>
+            <field name="res_model">update.price.wizard</field>
+            <field name="view_mode">form</field>
+        </record>
+    </data>
+</odoo>

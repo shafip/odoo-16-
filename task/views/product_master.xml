@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="product_inherit_view_form" model="ir.ui.view">
+            <field name="name">product.template.form.inherit.test</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='taxes_id']" position="before">
+                        <field name="mrp" string="MRP"/>
+                </xpath>
+                <xpath expr="//field[@name='sale_ok']" position="before">
+                    <group>
+                        <field name="seq_number" string="Number"/>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='product_tag_ids']" position="after">
+                        <field name="brand_id" />
+                </xpath>
+                <header>
+                     <button name="action_update_price" type="object" string="Update Price"/>
+                </header>
+            </field>
+        </record>
+    </data>
+</odoo>

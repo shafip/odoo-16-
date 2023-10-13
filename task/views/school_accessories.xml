@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <record id="school_accessories_view" model="ir.ui.view">
+            <field name="name">school.view.form</field>
+            <field name="model">school_accessories</field>
+            <field name="arch" type="xml">
+                <form string="school accessories">
+                    <sheet>
+                        <group>
+                            <field name="customer_name" string="Customer Name"/>
+                            <field name="date"/>
+                        </group>
+                        <notebook>
+                            <page string="school accessories line">
+                                <field name="school_accessory_line_ids" widget="one2many_list">
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <field name="name"/>
+                                                <field name="code"/>
+                                                <field name="quantity"/>
+                                                <field name="price"/>
+                                                <field name="sub_total"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree editable='bottom' string="school tree">
+                                       <field name="name"/>
+                                        <field name="code"/>
+                                        <field name="quantity"/>
+                                        <field name="price"/>
+                                        <field name="sub_total"/>
+                                    </tree>
+                                </field>
+                                <section string="Total Amount" style="text-align: right;">
+                                    <h1>Total
+                                        <field name="grand_total" sum="Total of Total Amount" />
+                                    </h1>
+                                </section>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="school_accessories_view_tree" model="ir.ui.view">
+            <field name="name">school.accessories.view.tree</field>
+            <field name="model">school_accessories</field>
+            <field name="arch" type="xml">
+                <tree string="school Accessories">
+                    <field name="customer_name" string="Customer Name"/>
+                    <field name="date"/>
+                    <field name="school_accessory_line_ids"/>
+                    <field name="grand_total"/>
+                </tree>
+            </field>
+
+        </record>
+
+        <record id="school_accessories_action" model="ir.actions.act_window">
+            <field name="name">school view</field>
+            <field name="res_model">school_accessories</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
+

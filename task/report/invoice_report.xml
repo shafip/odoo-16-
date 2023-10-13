@@ -1,0 +1,87 @@
+<odoo>
+    <template id="report_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+
+
+                <div align="top" style="margin-top: 0" >
+                    <h2 align="center">Invoice Report</h2>
+                </div>
+                <div>
+                    <span t-field="o.partner_id"/><br/>
+                    <span t-field="o.l10n_in_state_id"/><br/>
+                    <span t-field="o.l10n_in_gst_treatment"/>
+                </div>
+                <div>
+                    <td>Date : <span t-field="o.invoice_date"/></td><br/>
+                    <td><span t-field="o.payment_reference"/></td><br/>
+
+                </div>
+
+
+                <div class="table-container">
+                    <table class="table table-sm o_main_table table-borderless mt-4">
+                        <thead>
+                            <tr>
+                                <th style="padding: 20px">Product Name</th>
+                                <th style="padding: 20px">Label</th>
+                                <th style="padding: 15px">Quantity</th>
+                                <th style="padding: 15px">Price</th>
+                                <th style="padding: 15px">Mrp</th>
+                                <th style="padding: 15px">Taxes</th>
+                                <th style="padding: 15px">Sub Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="o.invoice_line_ids" t-as="invoice">
+
+                                <tr>
+                                    <td><span t-field="invoice.product_id"/></td>
+                                    <td style="padding: 20px"><span t-field="invoice.name"/></td>
+                                    <td style="padding: 20px"><span t-field="invoice.quantity"/></td>
+                                    <td style="padding: 20px"><span t-field="invoice.price_unit"/></td>
+                                    <td style="padding: 20px"><span t-field="invoice.mrp"/></td>
+                                    <td style="padding: 20px"><span t-field="invoice.tax_ids"/></td>
+                                    <td style="padding: 20px"><span t-field="invoice.price_subtotal"/></td>
+                                </tr>
+                            </t>
+                                <t t-set="total_quantity" t-value="0"/>
+                                <t t-foreach="docs" t-as="o">
+                                    <t t-foreach="o.invoice_line_ids" t-as="item">
+        <t t-set="total_quantity" t-value="total_quantity + item.quantity"/>
+    </t>
+                                </t>
+                            <t t-set="total_sub" t-value="0"/>
+                                <t t-foreach="docs" t-as="o">
+                                    <t t-foreach="o.invoice_line_ids" t-as="items">
+        <t t-set="total_sub" t-value="total_sub + items.price_subtotal"/>
+    </t>
+                                </t>
+                            <tr>
+                                    <th style="padding: 20px">Total</th>
+                                    <th style="padding: 20px"> </th>
+                                    <th style="padding: 20px"> <t t-esc="total_quantity"/></th>
+                                    <th style="padding: 20px"> </th>
+                                    <th style="padding: 20px"> </th>
+                                    <th style="padding: 20px"> </th>
+                                    <th style="padding: 20px"> <t t-esc="total_sub"/></th>
+
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+<record id="invoice_report" model="ir.actions.report">
+    <field name="name">Invoice Report</field>
+    <field name="model">account.move</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">task.report_invoice</field>
+    <field name="report_file">task.report_invoice</field>
+    <field name="binding_model_id" ref="account.model_account_move"/>
+    <field name="binding_type">report</field>
+</record>
+</odoo>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="clothes_view" model="ir.ui.view">
+            <field name="name">clothes.view.form</field>
+            <field name="model">clothes.master</field>
+            <field name="arch" type="xml">
+                <form string="clothes.master">
+                    <sheet>
+                        <group>
+                            <field name="customer_name" string="Name"/>
+                            <field name="date" string="Date"/>
+                        </group>
+                        <notebook>
+                            <page string="Cloth List">
+                                <field name="cloth_list_ids" widget="one2many_list">
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <field name="cloth_name"/>
+                                                <field name="code"/>
+                                                <field name="type_of_cloth"/>
+                                                <field name="quantity"/>
+                                                <field name="amount"/>
+                                                <field name="grand_total"/>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                    <tree editable='bottom' string="material tree">
+                                        <field name="cloth_name"/>
+                                        <field name="code"/>
+                                        <field name="type_of_cloth"/>
+                                        <field name="quantity"/>
+                                        <field name="amount"/>
+                                        <field name="grand_total"/>
+                                    </tree>
+                                </field>
+                                <section string="Total Amount" style="text-align: right;">
+                                    <h1>Total
+                                        <field name="grand_total" sum="Total of Total Amount" />
+                                    </h1>
+                                </section>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="clothes_view_tree" model="ir.ui.view">
+            <field name="name">clothes.view.tree</field>
+            <field name="model">clothes.master</field>
+            <field name="arch" type="xml">
+                <tree string="Material List">
+                    <field name="customer_name"/>
+                    <field name="date"/>
+                    <field name="cloth_list_ids" />
+                    <field name="grand_total"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="clothes_property_action" model="ir.actions.act_window">
+            <field name="name">clothes view</field>
+            <field name="res_model">clothes.master</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
+

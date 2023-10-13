@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="employee_form_view" model="ir.ui.view">
+            <field name="name">employee.form.view</field>
+            <field name="model">employees.data</field>
+            <field name="arch" type="xml">
+                <form string="Employee">
+                    <header>
+                        <button name="action_add_review" type="object" string="Add Review"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <p>
+                                <group>
+                                    <field name="first_name"/><br/>
+                                </group>
+                                <group>
+                                    <field name="last_name"/>
+                                </group>
+                            </p>
+                            <group>
+                            </group>
+                            <group>
+                                <field name="email"/>
+                                <field name="phone"/>
+                                <field name="hire_date" />
+                            </group>
+                            <group>
+                                <field name="department" widget="many2one_list" />
+                                <field name="salary"/>
+                            </group>
+                            <notebook>
+                                <page string="Reviews">
+                                        <field name="reviewer_ids" widget="one2many_list">
+                                             <tree create="false" string="Review" >
+
+                                                <field name="reviewer" string="Reviewer"/>
+                                                 <field name="review_date" string="Date"/>
+                                                 <field name="performance_rating" string="Performance Rating"/>
+                                                 <field name="areas_for_improvement" string="Areas for Improvement"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Notes">
+                                        <tree editable="bottom">
+                                            <field name="employee_note" placeholder="Enter Notes Write Here "/>
+                                        </tree>
+                                    </page>
+                                </notebook>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+        <record id="employee_view" model="ir.ui.view">
+            <field name="name">employee.view.form</field>
+            <field name="model">employees.data</field>
+            <field name="arch" type="xml">
+                <tree string="Employee">
+                    <field name="seq_number"/>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="email" />
+                    <field name="phone"/>
+                    <field name="department"/>
+                    <field name="hire_date" />
+                    <field name="salary"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sequence_employee" model="ir.sequence">
+           <field name="name">sequence.employee.number</field>
+           <field name="code">sequence_employee_number</field>
+           <field name="prefix">EMP</field>
+           <field name="padding">4</field>
+           <field name="company_id" eval="False"/>
+       </record>
+
+        <record id="employee_property_action" model="ir.actions.act_window">
+            <field name="name">Employee view</field>
+            <field name="res_model">employees.data</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
+

@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <record id="employee_review_wizard_form" model="ir.ui.view">
+            <field name="name">Employee Review Wizard</field>
+            <field name="model">employee.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Employee Review">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id"/>
+                                <field name="performance_rating"/>
+                                <field name="areas_for_improvement"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_review_create" string="Save" type="object" class="btn-success"/>
+                        <button string="CANCEL" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="action_add_review" model="ir.actions.act_window">
+            <field name="name">Employee Review</field>
+            <field name="res_model">employee.wizard</field>
+            <field name="view_mode">form</field>
+        </record>
+    </data>
+</odoo>

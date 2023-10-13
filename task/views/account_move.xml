@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="vendor_bill_filter" model="ir.ui.view">
+            <field name="name">vendor.bill.filter</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='name']" position="after">
+                    <field name="product_brand" string="Brand" groups="task.task_selected_views"/>
+                </xpath>
+                 <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='price_unit']" position="after">
+                    <field name="mrp" string="Mrp" groups="task.task_selected_views"/>
+                </xpath>
+                <group>
+                    <field name="partner_id" domain="[('vendor_state', '=', 'approved'), ('supplier_rank', '=', 1)]"/>
+                </group>
+            </field>
+        </record>
+    </data>
+</odoo>
